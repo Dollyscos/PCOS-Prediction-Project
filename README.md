@@ -34,6 +34,17 @@ Use this option if you already have Conda installed. It is the most reliable set
 conda env create -f environment.yml
 conda activate pcos_env
 ```
+
+### Install `llvm-openmp` or `libomp` (macOS only)
+On macOS, install `llvm-openmp` with Conda or `libomp` with Homebrew.
+```bash
+conda activate pcos_env
+conda install -c conda-forge llvm-openmp xgboost -y
+```
+```bash
+brew install libomp
+```
+
 ### Run the app
 From inside the pcos_streamlit_webpage folder:
 ```bash
@@ -70,7 +81,6 @@ Make sure these files are inside the `artifacts/` folder before running the app:
 - `ultrasound_resnet50.keras`
 - `ultrasound_metadata.json`
 - `shap_background.csv`
-- `clinical_xgb_pipeline.joblib`
 
 ## Notes
 - Use **relative paths only** in the project files.
@@ -86,7 +96,15 @@ Make sure these files are inside the `artifacts/` folder before running the app:
 This usually means the wrong Python environment is being used. Make sure the app is running inside the correct environment and reinstall dependencies if needed.
 
 ### 2. `XGBoost library could not be loaded`
-This usually happens when `libomp` is missing on macOS. Use the Conda setup if possible.
+This usually happens when `llvm-openmp` is missing on macOS. Use the Conda setup if possible.
+- On macOS, install llvm-openmp with Conda or libomp with Homebrew.
+```bash
+conda activate pcos_env
+conda install -c conda-forge llvm-openmp xgboost -y
+```
+```bash
+brew install libomp
+```
 
 ### 3. Streamlit does not run model results properly
 Clear the cache and restart the app:

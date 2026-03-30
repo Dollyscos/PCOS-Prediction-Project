@@ -1,0 +1,13 @@
+{
+  "img_size": [
+    224,
+    224
+  ],
+  "class_names": [
+    "No PCOS",
+    "PCOS"
+  ],
+  "threshold": 0.5,
+  "preprocessing": "tf.keras.applications.resnet.preprocess_input",
+  "model_name": "ResNet50 (Fine-tuned)"
+}
